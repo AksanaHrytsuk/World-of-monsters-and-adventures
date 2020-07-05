@@ -103,25 +103,7 @@ namespace Lean.Pool
 		private static Dictionary<GameObject, LeanGameObjectPool> prefabMap = new Dictionary<GameObject, LeanGameObjectPool>();
 
 		private static List<IPoolable> tempPoolables = new List<IPoolable>();
-#if UNITY_EDITOR
-		/// <summary>This will return false if you have pre-loaded prefabs do not match the <b>Prefab</b>.
-		/// NOTE: This is only availible in the editor.</summary>
-		public bool DespawnedClonesMatch
-		{
-			get
-			{
-				for (var i = despawnedClones.Count - 1; i >= 0; i--)
-				{
-					if (PrefabUtility.GetCorrespondingObjectFromSource(despawnedClones[i]) != prefab)
-					{
-						return false;
-					}
-				}
 
-				return true;
-			}
-		}
-#endif
 		/// <summary>Find the pool responsible for handling the specified prefab.</summary>
 		public static bool TryFindPoolByPrefab(GameObject prefab, ref LeanGameObjectPool foundPool)
 		{
@@ -402,18 +384,6 @@ namespace Lean.Pool
 			}
 		}
 
-		/// <summary>This will destroy all preloaded or despawned clones. This is useful if your prefab has been modified, and the old ones are no longer useful.</summary>
-		[ContextMenu("Clean")]
-		public void Clean()
-		{
-			for (var i = despawnedClones.Count - 1; i >= 0; i--)
-			{
-				DestroyImmediate(despawnedClones[i]);
-			}
-
-			despawnedClones.Clear();
-		}
-
 		protected virtual void Awake()
 		{
 			PreloadAll();
@@ -576,7 +546,7 @@ namespace Lean.Pool
 				}
 			}
 
-			var clone = DoInstantiate(prefab, position, rotation, parent);
+			var clone = Instantiate(prefab, position, rotation, parent);
 
 			if (Stamp == true)
 			{
@@ -588,22 +558,6 @@ namespace Lean.Pool
 			}
 
 			return clone;
-		}
-
-		private GameObject DoInstantiate(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
-		{
-#if UNITY_EDITOR
-			if (Application.isPlaying == false && PrefabUtility.IsPartOfRegularPrefab(prefab) == true)
-			{
-				var clone = (GameObject)PrefabUtility.InstantiatePrefab(prefab, parent);
-
-				clone.transform.position = position;
-				clone.transform.rotation = rotation;
-
-				return clone;
-			}
-#endif
-			return Instantiate(prefab, position, rotation, parent);
 		}
 
 		private void SpawnClone(GameObject clone, Vector3 position, Quaternion rotation, Transform parent, bool worldPositionStays)
@@ -731,14 +685,6 @@ namespace Lean.Pool
 				EditorGUILayout.IntField("Despawned", Target.Despawned);
 				EditorGUILayout.IntField("Total", Target.Total);
 			EditorGUI.EndDisabledGroup();
-
-			if (Application.isPlaying == false)
-			{
-				if (Any(t => t.DespawnedClonesMatch == false))
-				{
-					EditorGUILayout.HelpBox("Your preloaded clones no longer match the Prefab.", MessageType.Warning);
-				}
-			}
 		}
 
 		[MenuItem("GameObject/Lean/Pool", false, 1)]
