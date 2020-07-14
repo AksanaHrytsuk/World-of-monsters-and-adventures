@@ -111,8 +111,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6354816575653716780}
   - component: {fileID: 6354816575653716781}
-  - component: {fileID: 6354816575653716770}
   - component: {fileID: 6354816575653716771}
+  - component: {fileID: 3754779711294655749}
   m_Layer: 0
   m_Name: Slab
   m_TagString: Untagged
@@ -150,26 +150,6 @@ MonoBehaviour:
   destinationPoint: {fileID: 0}
   portalEffect: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   waitTime: 0.8
---- !u!114 &6354816575653716770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354816575653716768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c76557aed71ee9bb2f7d0aa2aca2c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  damage: 5
-  attackRadius: 0
-  selectObjectsToHit:
-    serializedVersion: 2
-    m_Bits: 0
-  iceCube: {fileID: 0}
-  dangerousBlock: 1
 --- !u!61 &6354816575653716771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,3 +176,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4855714, y: 1.4855709}
   m_EdgeRadius: 0
+--- !u!114 &3754779711294655749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6354816575653716768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4f2a811e7efe6a185623fb44d354de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  damage: 5
+  attackRadius: 0
+  selectObjectsToHit:
+    serializedVersion: 2
+    m_Bits: 0
+  iceCube: {fileID: 0}
+  dangerousBlock: 1
