@@ -14,7 +14,7 @@ public class Platform :  BaseClass
   [SerializeField] bool right;
     
   [Header("Distance")]
-  [SerializeField] int units;
+  [SerializeField] float units;
 
   private float _targetRight;
   private float _targetLeft;

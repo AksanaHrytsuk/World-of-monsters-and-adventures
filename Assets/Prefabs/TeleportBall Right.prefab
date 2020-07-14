@@ -142,7 +142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 8898065319807046584}
-  damage: 5
+  damage: 0
   destinationPoint: {fileID: 893531615094606272, guid: 5324192dd46e7d6798c745f2ad037e64,
     type: 3}
   right: 1
