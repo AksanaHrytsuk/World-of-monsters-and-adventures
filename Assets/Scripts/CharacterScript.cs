@@ -9,15 +9,18 @@ public class CharacterScript : BaseClass
 
     void DoDamage()
     {
-        if(Input.GetMouseButtonDown(0))
+        if ( Rigidbody2D != null)
         {
-            Animator.Play("Player_Attack");
-            
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, GetAttackDirection(), attackRadius, selectObjectsToHit);
-            if (hit2D.collider != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                EnemyScript damageOwner = hit2D.collider.GetComponent<EnemyScript>();
-                damageOwner.GetDamage(damage);
+                Animator.Play("Player_Attack");
+                RaycastHit2D hit2D = Physics2D.Raycast(transform.position, GetAttackDirection(), attackRadius,
+                    selectObjectsToHit);
+                if (hit2D.collider != null)
+                {
+                    BaseClass damageOwner = hit2D.collider.GetComponent<BaseClass>();
+                    damageOwner.GetDamage(damage);
+                }
             }
         }
     }

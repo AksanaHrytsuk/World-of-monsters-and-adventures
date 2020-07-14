@@ -2,27 +2,27 @@
 using UnityEngine;
 using DG.Tweening;
 
-// [RequireComponent(typeof(Rigidbody2D))]
 public class BaseClass : MonoBehaviour
 {
     [Header("Config parameters")]
     [SerializeField] protected float health;
-    [SerializeField] protected int damage;
-    [SerializeField] private GameObject iceCube;
+    [SerializeField] public int damage;
     [SerializeField] protected internal float attackRadius;
     [SerializeField] protected internal LayerMask selectObjectsToHit;
+    [SerializeField] protected GameObject iceCube;
 
     public Rigidbody2D Rigidbody2D { get; set; }
     public Collider2D Collider2D { get; set; }
     public Animator Animator { get; set; }
     public Movement Movement { get; set; }
-    
+    public CharacterScript CharacterScript { get; private set; }
+    public bool Frozen { get; set; }
 
     /// <summary>
     /// gameObject получает урон 
     /// </summary>
     /// <param name="getDamage"></param>
-    public virtual void GetDamage(float getDamage)
+    public void GetDamage(float getDamage)
     {
         health -= getDamage;
         if (health <= 0)
@@ -37,20 +37,17 @@ public class BaseClass : MonoBehaviour
         Destroy(Movement);
         Destroy(Rigidbody2D);
         Destroy(Collider2D);
-    }
+       }
     
-    protected internal void Freeze(int damage)
+    public virtual void Freeze()
     {
-        GameObject ice = LeanPool.Spawn(iceCube, transform);
-        GetDamage(damage);
-        Movement.StopMovement();
-        Sequence sequence = DOTween.Sequence();
-        sequence.AppendInterval(2f);
-        sequence.AppendCallback(() => { LeanPool.Despawn(ice); });
-        sequence.AppendCallback(() => { Movement.StartMovement(); });
+        if (iceCube != null && !Frozen)
+        {
+            LeanPool.Spawn(iceCube, transform);
+            Frozen = true;
+        }
     }
     
-
     public Vector2 GetAttackDirection()
     {
         float x = Animator.GetFloat("LastMoveX");
@@ -79,11 +76,13 @@ public class BaseClass : MonoBehaviour
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Collider2D = GetComponent<Collider2D>();
         Movement = GetComponent<Movement>();
+        CharacterScript = GetComponent<CharacterScript>();
     }
 
     private void Start()
     {
         StartAdditional();
+        Frozen = false;
     }
 
     protected virtual void StartAdditional()

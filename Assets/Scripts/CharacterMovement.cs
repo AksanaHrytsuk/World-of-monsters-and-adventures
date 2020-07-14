@@ -19,10 +19,10 @@ public class CharacterMovement : Movement
         }
     }
 
-    public override Vector2 Direction()
+    public override Vector3 Direction()
     {
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
-        return new Vector2(inputX, inputY);
+        return new Vector3(inputX, inputY);
     }
 }
