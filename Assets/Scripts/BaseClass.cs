@@ -5,7 +5,9 @@ using DG.Tweening;
 public class BaseClass : MonoBehaviour
 {
     [Header("Config parameters")]
-    [SerializeField] protected float health;
+    [SerializeField] public float health;
+
+    [SerializeField] public float maxHealth;
     [SerializeField] public int damage;
     [SerializeField] protected internal float attackRadius;
     [SerializeField] protected internal LayerMask selectObjectsToHit;
@@ -16,6 +18,8 @@ public class BaseClass : MonoBehaviour
     public Animator Animator { get; set; }
     public Movement Movement { get; set; }
     public CharacterScript CharacterScript { get; private set; }
+    public EnemyScript EnemyScript { get; set; }
+    public AnimationHelper AnimationHelper { get; set; }
     public bool Frozen { get; set; }
 
     /// <summary>
@@ -37,7 +41,13 @@ public class BaseClass : MonoBehaviour
         Destroy(Movement);
         Destroy(Rigidbody2D);
         Destroy(Collider2D);
+        DeathAdditional();
        }
+
+    protected virtual void DeathAdditional()
+    {
+        
+    }
     
     public virtual void Freeze()
     {
@@ -77,6 +87,7 @@ public class BaseClass : MonoBehaviour
         Collider2D = GetComponent<Collider2D>();
         Movement = GetComponent<Movement>();
         CharacterScript = GetComponent<CharacterScript>();
+        EnemyScript = GetComponent<EnemyScript>();
     }
 
     private void Start()

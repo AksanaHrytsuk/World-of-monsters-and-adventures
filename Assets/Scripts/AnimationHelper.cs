@@ -1,4 +1,5 @@
-﻿using Lean.Pool;
+﻿using System;
+using Lean.Pool;
 using UnityEngine;
 
 public class AnimationHelper : MonoBehaviour
@@ -24,6 +25,7 @@ public class AnimationHelper : MonoBehaviour
             characterScript.GetDamage(enemyDamage);
         }
     }
+    
     // создание IceBall в момент анимации Idle
     public void CreateIceBall()
     {
@@ -45,4 +47,6 @@ public class AnimationHelper : MonoBehaviour
     {
         _movement.StartMovement();
     }
+
+  
 }

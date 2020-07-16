@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationPoint: {fileID: 0}
   portalEffect: {fileID: 0}
-  waitTime: 0.7
+  waitTime: 0.4
 --- !u!61 &6354816575653716771
 BoxCollider2D:
   m_ObjectHideFlags: 0
