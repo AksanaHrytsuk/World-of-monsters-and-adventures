@@ -10,13 +10,15 @@ public class PortalBetweenPoints : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(0.5f);
         sequence.AppendCallback(PortalEffect);
         sequence.AppendInterval(waitTime);
         sequence.AppendCallback(() => Teleport(collision));
     }
     void Teleport(Collider2D collision)
     {
-        collision.transform.position = destinationPoint.position;
+        if (collision.CompareTag("Character"))
+        {collision.transform.position = destinationPoint.position;}
     }
 
     private void PortalEffect()

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 [System.Serializable]
-public class MyClass
+public partial class MyClass
 {
     public int myInt;
     public List<int> myList = new List<int>();

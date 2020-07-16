@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 330959253662156209}
   - component: {fileID: 330959253662156210}
   - component: {fileID: 330959253662156211}
-  - component: {fileID: 330959253662156208}
   - component: {fileID: 1534015650}
+  - component: {fileID: 330959253662156208}
   m_Layer: 10
   m_Name: IceBall
   m_TagString: Untagged
@@ -106,6 +106,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &1534015650
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330959253662156220}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.92
 --- !u!114 &330959253662156208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,19 +143,3 @@ MonoBehaviour:
     m_Bits: 256
   target: {fileID: 1163503487885847214, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131, type: 3}
   damage: 5
---- !u!58 &1534015650
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330959253662156220}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.92
