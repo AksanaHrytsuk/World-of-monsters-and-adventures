@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemyMovement : Movement
 {
@@ -6,6 +7,12 @@ public class EnemyMovement : Movement
     public GameObject[] patrolPoints;
     public float distanceToPoint;
     private CharacterScript _character;
+
+    [SerializeField]
+    private bool cyclically;
+
+    private int _currentIndex = 0;
+    private int _step;
     protected override void StartAdditional()
     {
         base.StartAdditional();
@@ -24,20 +31,47 @@ public class EnemyMovement : Movement
             StopMovement();
             return transform.position;
         }
-        Vector3 direction = patrolPoints[0].transform.position - transform.position; // желаемое - текущее 
+        Vector3 direction = NextPoint().position - transform.position; // желаемое - текущее 
         ChangeDirection();
         return direction;
     }
-	
+
+    private Transform NextPoint()
+    {
+        if (cyclically)
+        {
+            return patrolPoints[0].transform;
+        }
+        return patrolPoints[_currentIndex].transform;
+    }
     private void ChangeDirection()
     {    
-        float distance = Vector3.Distance(transform.position, patrolPoints[0].transform.position);
+        float distance = Vector3.Distance(transform.position, NextPoint().position);
         if (distance < distanceToPoint)
         {
-            ChangeArray();
+            if (cyclically)
+            {
+                ChangeArray();
+            }
+            else
+            {
+                ChangeIndex();
+            }
         }
     }
-	
+
+    private void ChangeIndex()
+    {
+        if (_currentIndex == 0)
+        {
+            _step = 1;
+        }
+        if (_currentIndex == patrolPoints.Length-1)
+        {
+            _step = -1;
+        }
+        _currentIndex += _step;
+    }
     private void ChangeArray()
     {
         GameObject tmp = patrolPoints[0];
