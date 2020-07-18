@@ -7,6 +7,8 @@ TagManager:
   - Character
   - CheckPoint
   - Monster
+  - FxTemporaire
+  - Walls
   layers:
   - Default
   - TransparentFX

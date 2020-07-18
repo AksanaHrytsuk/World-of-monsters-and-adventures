@@ -1,5 +1,4 @@
-﻿using System;
-using Lean.Pool;
+﻿
 using UnityEngine;
 
 public class AnimationHelper : MonoBehaviour
@@ -9,11 +8,12 @@ public class AnimationHelper : MonoBehaviour
     private Movement _movement;
     private EnemyScript enemyScript;
     public Transform target;
-
+    
     private void Start()
     {
         _movement = GetComponentInParent<Movement>();
         enemyScript = GetComponentInParent<EnemyScript>();
+        target = FindObjectOfType<CharacterScript>().transform;
     }
     // монстрик наносит урон плееру в момент анимации атаки
     public void Attack()
@@ -33,8 +33,6 @@ public class AnimationHelper : MonoBehaviour
         {
             Bullets bullet = Instantiate(prefabIceBall, enemyScript.targetPosition.position, transform.rotation);
             bullet.TargetPosition = target.position;
-            //Debug.Log(bullet.TargetPosition);
-           // bullet.Move();
         }
     }
 
@@ -47,6 +45,4 @@ public class AnimationHelper : MonoBehaviour
     {
         _movement.StartMovement();
     }
-
-  
 }

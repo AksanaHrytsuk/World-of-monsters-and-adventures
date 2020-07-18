@@ -22,10 +22,11 @@ public class Movement : MonoBehaviour
         
     }
 
-     void Update()
+     protected virtual void Update()
     {
         Move(); 
         ApplyAnimation();
+        
     }
 
      private void FixedUpdate()
