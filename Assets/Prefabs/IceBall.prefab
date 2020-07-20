@@ -142,4 +142,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   target: {fileID: 1163503487885847214, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131, type: 3}
-  damage: 5
+  damage: 1

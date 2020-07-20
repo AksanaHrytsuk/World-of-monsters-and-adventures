@@ -189,7 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  damage: 5
+  maxHealth: 0
+  damage: 1
   attackRadius: 0
   selectObjectsToHit:
     serializedVersion: 2

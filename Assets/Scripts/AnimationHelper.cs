@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimationHelper : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class AnimationHelper : MonoBehaviour
         if (enemyScript != null)
         {
             CharacterScript characterScript = FindObjectOfType<CharacterScript>();
-            float enemyDamage = enemyScript.damage;
+            int enemyDamage = enemyScript.damage;
             characterScript.GetDamage(enemyDamage);
         }
     }
