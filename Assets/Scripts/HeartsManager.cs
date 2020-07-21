@@ -42,6 +42,7 @@ public class HeartsManager : MonoBehaviour
     
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         ChangeHearts();
         _player = FindObjectOfType<CharacterScript>();
         _player.onHealthChanged += ChangeHearts;
