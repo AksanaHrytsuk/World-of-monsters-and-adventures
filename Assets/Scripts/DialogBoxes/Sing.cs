@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Sing : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogBox;
+    [SerializeField] protected GameObject dialogBox;
 
     [SerializeField] private Text dialogText;
-
+    
+    [TextArea(2, 10)]
     [SerializeField] private string dialog;
-
-    [SerializeField] private bool playerInRange;
+    protected bool playerInRange;
 
     private void Update()
     {

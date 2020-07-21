@@ -620,13 +620,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cacb0b0ad154b11fb97aea4e8848c4a2, type: 3}
+    m_Font: {fileID: 12800000, guid: 6c266a6a80f338b4a89e0e4d7d50effb, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -657,8 +657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -49}
-  m_SizeDelta: {x: -57.3, y: -122.1}
+  m_AnchoredPosition: {x: -0.000030517578, y: -10.2}
+  m_SizeDelta: {x: -57.3, y: -88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &117039813
 GameObject:
@@ -55121,6 +55121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6249d0e30774f89139842f7c8ac6be50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogBox: {fileID: 1823380334621092}
+  dialogText: {fileID: 1753144044}
+  dialog: 
   dialogueManager: {fileID: 1420655419}
   dialogue:
     name: Gary
@@ -56341,8 +56344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 8945438577435924024}
   dialogText: {fileID: 97505364}
-  dialog: Go to the left
-  playerInRange: 0
+  dialog: "\u0418\u0434\u0438\u0442\u0435 \u043D\u0430\u043B\u0435\u0432\u043E"
 --- !u!1 &1753144042
 GameObject:
   m_ObjectHideFlags: 0
@@ -58622,7 +58624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1823380334621093
 Animator:
   serializedVersion: 3
@@ -58751,7 +58753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a07f3c6986408afe5b49b345215a1e03, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc8fe3a7cab944018a8dc2737eecabf5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -59199,8 +59201,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a07f3c6986408afe5b49b345215a1e03, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 15eb0306517ade64f860fe3e5327d199, type: 3}
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -59234,8 +59236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 7, y: 392.8}
-  m_SizeDelta: {x: 500.5, y: 179.7}
+  m_AnchoredPosition: {x: -2, y: 392.8}
+  m_SizeDelta: {x: 482.5, y: 160.5}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &9168814636208559804
 RectTransform:

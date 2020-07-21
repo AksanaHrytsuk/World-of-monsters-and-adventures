@@ -1,13 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NPC : Sing
 {
     public DialogueManager dialogueManager;
     
     public Dialogue dialogue;
-
-    private bool _playerInRange;
 
     public void TriggerDialogue()
     {
@@ -16,27 +14,35 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
-        if (_playerInRange)
+        if (playerInRange)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                TriggerDialogue();
+                if (dialogBox.activeInHierarchy)
+                {
+                    dialogBox.SetActive(false);
+                }
+                else
+                {
+                    dialogBox.SetActive(true);
+                    TriggerDialogue();
+                }
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Character"))
-        {
-            _playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Character"))
-        {
-            _playerInRange = false;
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Character"))
+    //     {
+    //         _playerInRange = true;
+    //     }
+    // }
+    //
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.CompareTag("Character"))
+    //     {
+    //         _playerInRange = false;
+    //     }
+    // }
 }
