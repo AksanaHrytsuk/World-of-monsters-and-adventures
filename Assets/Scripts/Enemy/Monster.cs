@@ -9,9 +9,8 @@ public class Monster : BaseClass
     [SerializeField] private ParticleSystem deathMonsterEffect;
     
     [Tooltip("Components")]
-    private Movement _movement;
+   // private Movement _movement;
     private Sequence _sequence;
-    
     
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -25,21 +24,17 @@ public class Monster : BaseClass
     protected override void StartAdditional()
     {
         base.StartAdditional();
-        _movement = FindObjectOfType<Movement>();
+      //  _movement = FindObjectOfType<Movement>();
     }
     
     protected override void Death()
     {
-        base.Death();
-        Effect();;
+       // base.Death();
+       _sequence.AppendInterval(0.5f);
+       _sequence.AppendCallback(DeathEffect);
+       _sequence.AppendInterval(1f);
         Destroy(gameObject);
         CreatePickUp();
-    }
-
-    void Effect()
-    {
-        _sequence.AppendCallback(DeathEffect);
-        _sequence.AppendInterval(0.5f);
     }
 
     private void DeathEffect()

@@ -52,4 +52,14 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
+    
+    public void LoadNextSceneByName(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
+
+    public void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 }

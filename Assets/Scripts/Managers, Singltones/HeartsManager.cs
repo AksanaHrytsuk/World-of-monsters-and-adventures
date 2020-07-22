@@ -21,9 +21,9 @@ public class HeartsManager : MonoBehaviour
 
     #endregion
     [SerializeField] private List<Image> hearts = new List<Image>();
-    [SerializeField] private BaseClass _player;
     [SerializeField] private Sprite _heartSprite;
     [SerializeField] private Sprite _transparentSprite;
+    private BaseClass _player;
 
     private Health _health;
     
@@ -42,9 +42,8 @@ public class HeartsManager : MonoBehaviour
     
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        ChangeHearts();
         _player = FindObjectOfType<CharacterScript>();
+        ChangeHearts();
         _player.onHealthChanged += ChangeHearts;
     }
 }

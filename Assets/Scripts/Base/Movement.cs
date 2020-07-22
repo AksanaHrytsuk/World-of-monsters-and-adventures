@@ -9,9 +9,12 @@ public class Movement : MonoBehaviour
  
     public float speed;
 
+    private Monster _monster;
+
     void Start()
     {
         StartAdditional();
+        _monster = GetComponent<Monster>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponentInChildren<Animator>();
         CanMove = true;
