@@ -11,9 +11,7 @@ public class PortalBetweenPoints : MonoBehaviour
     {
         Sequence sequence = DOTween.Sequence();
         sequence.AppendCallback(() => Teleport(collision));
-        //sequence.AppendInterval(0.5f);
         sequence.AppendCallback(PortalEffect);
-        sequence.AppendInterval(waitTime);
     }
     void Teleport(Collider2D collision)
     {

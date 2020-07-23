@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using UnityEngine;
 
 public class NPC : Sing
@@ -30,19 +30,4 @@ public class NPC : Sing
             }
         }
     }
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Character"))
-    //     {
-    //         _playerInRange = true;
-    //     }
-    // }
-    //
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Character"))
-    //     {
-    //         _playerInRange = false;
-    //     }
-    // }
 }

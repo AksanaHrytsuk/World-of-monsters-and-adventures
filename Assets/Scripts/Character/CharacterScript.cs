@@ -2,9 +2,10 @@
 using UnityEngine;
 public class CharacterScript : BaseClass
 {
-    [SerializeField] private int poorHealth = 280;
-    private Vector2 newPlayerPosition = new Vector3(x: -1, y: -1);
+    [SerializeField] private int poorHealth = 1;
+    [SerializeField] Vector2 newPlayerPosition = new Vector3(x: -1, y: -1);
     public Action changeEnemyBehavior = delegate {  };
+    private GameManager _gameManager;
     private void Update()
     {
         DoDamage();
@@ -14,20 +15,30 @@ public class CharacterScript : BaseClass
     protected override void StartAdditional()
     {
         base.StartAdditional();
-        DontDestroyOnLoad(gameObject);
+        _gameManager = FindObjectOfType<GameManager>();
+        
+        if (!_gameManager.startGame)
+        { 
+            Load();
+            _gameManager.startGame = false;
+        }
     }
-
+    
+    // Save data
     public void Save()
     {
         GameSaveManager.SavePlayer(this);
     }
-
+    
+    // Load data
     public void Load()
     {
         PlayerData data = GameSaveManager.LoadPlayer();
         health = data.health;
         maxHealth = data.maxHealth;
         damage = data.damage;
+        attackRadius = data.attackRadius;
+        onHealthChanged();
     }
 
     void DoDamage()

@@ -12,6 +12,7 @@ public class BaseClass : MonoBehaviour
     [SerializeField] protected internal float attackRadius;
     [SerializeField] protected internal LayerMask selectObjectsToHit;
     [SerializeField] protected GameObject iceCube;
+   
     
     public Action onHealthChanged = delegate {  };
 

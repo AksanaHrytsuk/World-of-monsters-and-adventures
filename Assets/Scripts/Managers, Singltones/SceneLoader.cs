@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
@@ -61,5 +62,10 @@ public class SceneLoader : MonoBehaviour
     public void LoadLevel(int index)
     {
         SceneManager.LoadScene(index);
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 }
