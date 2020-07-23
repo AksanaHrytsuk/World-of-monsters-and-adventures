@@ -11,15 +11,17 @@ public class GameSaveManager
     {
         // open binaryFormatter
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        // open filestreem. tell it two things where it is going to be saving this file and how you want to be opening it
+        // create filestreem. tell it two things where it is going to be saving this file and how you want to be opening it
         FileStream fileStream = new FileStream(Application.persistentDataPath + "/player.save", FileMode.Create);
 
         PlayerData data = new PlayerData(player);
+        // сохранить файл в потоке
         binaryFormatter.Serialize(fileStream, data);
+        //закрыть поток
         fileStream.Close();
     }
 
-    public static int[] LoadPlayer()
+    public static PlayerData LoadPlayer()
     {
         if (File.Exists(Application.persistentDataPath + "/player.save"))
         {
@@ -29,25 +31,25 @@ public class GameSaveManager
             
             fileStream.Close();
 
-            return data.statsOne;
+            return data;
             
         }
         Debug.LogError("File does not exist");
-        return new int[3];
+        return null;
     }
 }
 
 [Serializable]
     public class PlayerData
     {
-        public int[] statsOne;
-        public float[] statsTwo;
+        public int health;
+        public int maxHealth;
+        public int damage;
         public PlayerData(CharacterScript player)
         {
-            statsOne = new int[3];
-            statsOne[0] = player.health;
-            statsOne[1] = player.maxHealth;
-            statsOne[2] = player.damage;
+            health = player.health;
+            maxHealth = player.maxHealth;
+            damage = player.damage;
         }
     }
     

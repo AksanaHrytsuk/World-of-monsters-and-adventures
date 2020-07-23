@@ -24,10 +24,10 @@ public class CharacterScript : BaseClass
 
     public void Load()
     {
-        int[] loadedStates = GameSaveManager.LoadPlayer();
-        health = loadedStates[0];
-        maxHealth = loadedStates[1];
-        damage = loadedStates[2];
+        PlayerData data = GameSaveManager.LoadPlayer();
+        health = data.health;
+        maxHealth = data.maxHealth;
+        damage = data.damage;
     }
 
     void DoDamage()
