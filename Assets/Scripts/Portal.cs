@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
     #endregion
     [SerializeField] private ParticleSystem portalEffect;
     
-    [SerializeField] private bool _onEnablePortal;
+    private bool _onEnablePortal;
     private Collider2D _collider2D;
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,6 +37,7 @@ public class Portal : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
         _onEnablePortal = false;
         enabled = false;
+        _collider2D.enabled = false;
     }
 
     public void OnEnablePortal()
