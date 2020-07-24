@@ -13,7 +13,8 @@ public class BaseClass : MonoBehaviour
     [SerializeField] protected internal LayerMask selectObjectsToHit;
     [SerializeField] protected GameObject iceCube;
    
-    
+    public Action onDeath = delegate {  };
+
     public Action onHealthChanged = delegate {  };
 
     public Rigidbody2D Rigidbody2D { get; set; }
@@ -43,6 +44,7 @@ public class BaseClass : MonoBehaviour
     protected virtual void Death()
     {
         Animator.SetTrigger("Death");
+        onDeath();
         Destroy(Movement);
         Destroy(Rigidbody2D);
         Destroy(Collider2D);

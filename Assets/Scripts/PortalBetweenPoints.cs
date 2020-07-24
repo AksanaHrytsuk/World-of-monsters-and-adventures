@@ -6,7 +6,7 @@ public class PortalBetweenPoints : MonoBehaviour
     [SerializeField] Transform destinationPoint;
     [SerializeField] private ParticleSystem portalEffect;
     [SerializeField] private float waitTime = 0.5f;
-    
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Sequence sequence = DOTween.Sequence();

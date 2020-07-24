@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,15 +22,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public bool startGame = true;
-    // Start is called before the first frame update
+    
     void Start()
     {
+       
        DontDestroyOnLoad(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

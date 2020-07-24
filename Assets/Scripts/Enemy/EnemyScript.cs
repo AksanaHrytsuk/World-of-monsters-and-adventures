@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EnemyScript : BaseClass
 {
@@ -7,14 +8,24 @@ public class EnemyScript : BaseClass
   [SerializeField] private Text text;
 
   public bool canShoot = true;
-
-
+  private Portal _portal;
+  
   private float distance;
 
   private float meleeAttackDistance;
 
   [Tooltip("Components")]
   private CharacterScript _character;
+  
+  public void CreatPortal()
+  {
+    Sequence sequence = DOTween.Sequence();
+    sequence.AppendInterval(1f);
+    //sequence.AppendCallback(() => AudioManager.Instance.PLaySound(portalMusic));
+    sequence.AppendCallback(_portal.NextLevelEffect);
+    sequence.AppendInterval(1f);
+    sequence.AppendCallback(_portal.OnEnablePortal);
+  }
 
   void CheckFreeze()
   {
@@ -37,8 +48,10 @@ public class EnemyScript : BaseClass
   
   protected override void StartAdditional()
   {
+    _portal = FindObjectOfType<Portal>();
     _character = FindObjectOfType<CharacterScript>();
     Movement = GetComponent<Movement>();
+    onDeath += CreatPortal;
   }
 
   private void UpdateDistance()

@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266b5a0978df8634daedbd621987c407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 1
   maxHealth: 20
   damage: 1
   attackRadius: 3
