@@ -47,7 +47,6 @@ public class Portal : MonoBehaviour
         _collider2D.enabled = true;
     }
     
-    
     public void NextLevelEffect()
     {
         if (portalEffect != null)

@@ -47,7 +47,7 @@ public class BaseClass : MonoBehaviour
         onDeath();
         Destroy(Movement);
         Destroy(Rigidbody2D);
-        Destroy(Collider2D);
+       // Destroy(Collider2D);
         DeathAdditional();
        }
 

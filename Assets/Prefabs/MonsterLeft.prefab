@@ -426,7 +426,7 @@ MonoBehaviour:
   selectObjectsToHit:
     serializedVersion: 2
     m_Bits: 0
-  iceCube: {fileID: 0}
+  iceCube: {fileID: 976527421490504332, guid: e525cb812c45000a5b8b1660667bc4d7, type: 3}
   probability: 100
   pickUps:
   - {fileID: 5519013831134595468, guid: 87a4efd1042758983870f6fb5ca695fe, type: 3}
@@ -452,8 +452,10 @@ MonoBehaviour:
   - {fileID: 8641570247277392564}
   - {fileID: 8641570247020524026}
   - {fileID: 8641570246329010519}
-  distanceToPoint: 1
   cyclically: 0
+  _characterAsPatrolPoint: 0
+  distanceToPoint: 1
+  slowDown: 30
 --- !u!1 &8641570247271558645
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,12 @@ public class Bullets : MonoBehaviour
 {
     [Header("Config parameters")] 
     [SerializeField] private bool explosive;
+    [SerializeField] private bool explodeOnTarget = true;
     [SerializeField] private float explodeRadius;
     [SerializeField] private float distanceToObject;
     [SerializeField] private float speed;
     [SerializeField] private LayerMask _layerMask;
     public Vector3 TargetPosition { get; set; }
-    public Transform target;
 
     public int damage;
 
@@ -24,13 +24,14 @@ public class Bullets : MonoBehaviour
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        Rigidbody2D.velocity = Direction().normalized * speed;
-//      TargetPosition = target.position;
+        AddSpeed(Direction());
     }
 
-    public void Move()
+    public void AddSpeed(Vector2 direction)
     {
+        Rigidbody2D.velocity = direction.normalized * speed;
     }
+
     // направление до таргета
     public virtual Vector2 Direction()
     {
@@ -73,7 +74,7 @@ public class Bullets : MonoBehaviour
     private void CheckHit()
     {
         float distance = Vector2.Distance(transform.position, TargetPosition);
-        if (distance < distanceToObject)
+        if (distance < distanceToObject && explodeOnTarget)
         {
             Explosion();
         }

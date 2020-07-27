@@ -5,18 +5,19 @@ using DG.Tweening;
 public class EnemyScript : BaseClass
 {
   [SerializeField] public Transform targetPosition;
+
   [SerializeField] private Text text;
-
   public bool canShoot = true;
-  private Portal _portal;
-  
-  private float distance;
 
+  private float distance;
   private float meleeAttackDistance;
 
   [Tooltip("Components")]
   private CharacterScript _character;
+
+  private Portal _portal;
   
+
   public void CreatPortal()
   {
     Sequence sequence = DOTween.Sequence();
@@ -43,6 +44,10 @@ public class EnemyScript : BaseClass
   {
     UpdateDistance();
     CheckFreeze();
+  }
+
+  void UpdateHpText()
+  {
     text.text = "HP: " + health + "/" + maxHealth;
   }
   
@@ -51,7 +56,9 @@ public class EnemyScript : BaseClass
     _portal = FindObjectOfType<Portal>();
     _character = FindObjectOfType<CharacterScript>();
     Movement = GetComponent<Movement>();
+    UpdateHpText();
     onDeath += CreatPortal;
+    onHealthChanged += UpdateHpText;
   }
 
   private void UpdateDistance()
@@ -68,12 +75,13 @@ public class EnemyScript : BaseClass
   {
     base.Death();
     Destroy(this);
+    _character.attackType = "Ice";
   }
 
-  public Vector2 Direction()
-  {
-      return _character.transform.position - transform.position;
-  }
+  // public Vector2 Direction()
+  // {
+  //     return _character.transform.position - transform.position;
+  // }
 
   private void OnDrawGizmosSelected()
   {

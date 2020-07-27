@@ -57771,6 +57771,17 @@ PrefabInstance:
       propertyPath: poorHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1163503487885847210, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131,
+        type: 3}
+      propertyPath: prefabIceBall
+      value: 
+      objectReference: {fileID: 330959253662156208, guid: c96678ebb299f6235bb4c49605b059d4,
+        type: 3}
+    - target: {fileID: 1163503487885847210, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131,
+        type: 3}
+      propertyPath: attackType
+      value: None
+      objectReference: {fileID: 0}
     - target: {fileID: 1163503487885847211, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131,
         type: 3}
       propertyPath: m_LocalPosition.x
