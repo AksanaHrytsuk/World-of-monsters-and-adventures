@@ -44,12 +44,14 @@ public static class GameSaveManager
         public int maxHealth;
         public int damage;
         public float attackRadius;
+        public string attackType;
         public PlayerData(CharacterScript player)
         {
             health = player.health;
             maxHealth = player.maxHealth;
             damage = player.damage;
             attackRadius = player.attackRadius;
+            attackType = player.attackType;
         }
     }
     

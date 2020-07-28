@@ -7,10 +7,22 @@ public class Monster : BaseClass
     [SerializeField] private int probability;
     [SerializeField] private GameObject [] pickUps;
     [SerializeField] private ParticleSystem deathMonsterEffect;
+    public bool isMonster = true;
     
     [Tooltip("Components")]
    // private Movement _movement;
     private Sequence _sequence;
+
+   public bool GetMonster()
+   {
+       return isMonster;
+   }
+
+   public void SetMonster(bool name)
+   {
+       isMonster = name;
+   }
+   
     
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -25,6 +37,7 @@ public class Monster : BaseClass
     {
         base.StartAdditional();
       //  _movement = FindObjectOfType<Movement>();
+      isMonster = true;
     }
     
     protected override void Death()
@@ -37,14 +50,6 @@ public class Monster : BaseClass
         CreatePickUp();
     }
 
-    private void DeathEffect()
-    {
-        if (deathMonsterEffect != null)
-        {
-            Vector3 effectPosition = transform.position;
-            Instantiate(deathMonsterEffect, effectPosition, transform.rotation);
-        }
-    }
     public void CreatePickUp()
     {
         if (Chance())
@@ -66,4 +71,12 @@ public class Monster : BaseClass
         return false;
     }
 
+    private void DeathEffect()
+    {
+        if (deathMonsterEffect != null)
+        {
+            Vector3 effectPosition = transform.position;
+            Instantiate(deathMonsterEffect, effectPosition, transform.rotation);
+        }
+    }
 }

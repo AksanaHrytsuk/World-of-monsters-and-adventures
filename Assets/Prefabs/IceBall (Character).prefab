@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 330959253662156208}
   m_Layer: 14
   m_Name: IceBall (Character)
-  m_TagString: Untagged
+  m_TagString: Freezing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,5 +141,5 @@ MonoBehaviour:
   speed: 5
   _layerMask:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 35328
   damage: 1

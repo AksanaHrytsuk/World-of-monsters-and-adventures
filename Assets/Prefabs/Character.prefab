@@ -199,11 +199,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cb153b564dbbbd691845b79d549564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  maxHealth: 310
-  damage: 20
+  health: 3
+  maxHealth: 4
+  damage: 1
   attackRadius: 1
   selectObjectsToHit:
     serializedVersion: 2
     m_Bits: 4608
   iceCube: {fileID: 976527421490504332, guid: e525cb812c45000a5b8b1660667bc4d7, type: 3}
+  poorHealth: 1
+  newPlayerPosition: {x: -1, y: -1}
+  prefabIceBall: {fileID: 330959253662156208, guid: c96678ebb299f6235bb4c49605b059d4,
+    type: 3}
+  attackType: None
+  isMonster: 0

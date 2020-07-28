@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - FxTemporaire
   - Walls
+  - Freezing
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Ice
   - Button
   - Character Bomb
-  - 
+  - Objects
   - 
   - 
   - 

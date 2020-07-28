@@ -22,7 +22,7 @@ public class EnemyScript : BaseClass
   {
     Sequence sequence = DOTween.Sequence();
     sequence.AppendInterval(1f);
-    //sequence.AppendCallback(() => AudioManager.Instance.PLaySound(portalMusic));
+    // TODO sequence.AppendCallback(() => AudioManager.Instance.PLaySound(portalMusic));
     sequence.AppendCallback(_portal.NextLevelEffect);
     sequence.AppendInterval(1f);
     sequence.AppendCallback(_portal.OnEnablePortal);
@@ -77,11 +77,6 @@ public class EnemyScript : BaseClass
     Destroy(this);
     _character.attackType = "Ice";
   }
-
-  // public Vector2 Direction()
-  // {
-  //     return _character.transform.position - transform.position;
-  // }
 
   private void OnDrawGizmosSelected()
   {

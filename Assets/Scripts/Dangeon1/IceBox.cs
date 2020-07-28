@@ -1,4 +1,7 @@
-﻿public class IceBox : BaseClass
+﻿using System;
+using UnityEngine;
+
+public class IceBox : BaseClass
 {
     private CharacterScript _character;
     protected override void StartAdditional()

@@ -10,6 +10,18 @@ public class CharacterScript : BaseClass
     private GameManager _gameManager;
     private EnemyScript _enemyScript;
     public string attackType = "None";
+    
+    public bool isMonster;
+    
+    public bool GetMonster()
+    {
+        return isMonster;
+    }
+
+    public void SetMonster(bool name)
+    {
+        isMonster = name;
+    }
     private void Update()
     {
         DoDamage();
@@ -23,7 +35,6 @@ public class CharacterScript : BaseClass
         Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPosition);
         bullet.TargetPosition = worldPos;
-
     }
 
     protected override void StartAdditional()
@@ -31,6 +42,7 @@ public class CharacterScript : BaseClass
         base.StartAdditional();
         _gameManager = FindObjectOfType<GameManager>();
         _enemyScript = FindObjectOfType<EnemyScript>();
+        isMonster = false;
         if (!_gameManager.startGame)
         { 
             Load();
@@ -52,6 +64,7 @@ public class CharacterScript : BaseClass
         maxHealth = data.maxHealth;
         damage = data.damage;
         attackRadius = data.attackRadius;
+        attackType = data.attackType;
         onHealthChanged();
     }
 
