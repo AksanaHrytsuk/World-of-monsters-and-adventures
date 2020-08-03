@@ -303,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3152488824042519058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.016, z: 0}
+  m_LocalPosition: {x: -0.06, y: -1.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3152488824860781407}
@@ -393,6 +393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabIceBall: {fileID: 330959253662156208, guid: 8f6133030cfe379b4ba49f2eee20e2ec,
     type: 3}
+  iceSound: {fileID: 8300000, guid: 57383b87b954bfd78ae5a660114acfaf, type: 3}
+  musicManager: {fileID: 0}
   target: {fileID: 1163503487885847211, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131, type: 3}
 --- !u!1 &3152488824227446975
 GameObject:
@@ -578,9 +580,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   iceCube: {fileID: 976527421490504332, guid: e525cb812c45000a5b8b1660667bc4d7, type: 3}
+  musicManager: {fileID: 0}
   targetPosition: {fileID: 3152488826109023655}
   text: {fileID: 2960164282742690301}
   canShoot: 1
+  _portalSound: {fileID: 8300000, guid: d7d9586d3f2b8136095fb504a0a08ef8, type: 3}
 --- !u!114 &3152488824860781400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,7 +1026,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 611dac117a00c3e5e9e8f3d259b288fe, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0

@@ -334,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabIceBall: {fileID: 0}
+  iceSound: {fileID: 0}
+  musicManager: {fileID: 0}
   target: {fileID: 0}
 --- !u!1 &8641570247224510055
 GameObject:
@@ -427,10 +429,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   iceCube: {fileID: 976527421490504332, guid: e525cb812c45000a5b8b1660667bc4d7, type: 3}
+  musicManager: {fileID: 0}
   probability: 100
   pickUps:
   - {fileID: 5519013831134595468, guid: 87a4efd1042758983870f6fb5ca695fe, type: 3}
   deathMonsterEffect: {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  isMonster: 1
 --- !u!114 &8641570247224510048
 MonoBehaviour:
   m_ObjectHideFlags: 0

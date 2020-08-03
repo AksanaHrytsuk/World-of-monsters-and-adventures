@@ -1,33 +1,27 @@
 ﻿using System;
+using Lean.Pool;
 using UnityEngine;
+
 public class CharacterScript : BaseClass
 {
     [SerializeField] private int poorHealth = 1;
-    [SerializeField] Vector2 newPlayerPosition = new Vector3(x: -1, y: -1);
     [SerializeField] private Bullets prefabIceBall;
+    [SerializeField] private ParticleSystem attackCharacterEffect;
+    [SerializeField] private AudioClip attackCharacter;
 
-    public Action changeEnemyBehavior = delegate {  };
-    private GameManager _gameManager;
-    private EnemyScript _enemyScript;
+    public Action changeEnemyBehavior = delegate { };
     public string attackType = "None";
-    
-    public bool isMonster;
-    
-    public bool GetMonster()
-    {
-        return isMonster;
-    }
 
-    public void SetMonster(bool name)
-    {
-        isMonster = name;
-    }
+    public Vector2 startPosition = new Vector2(x:-1,y: -1);
+    private GameManager _gameManager;
+
     private void Update()
     {
         DoDamage();
         LoseHealth();
     }
-    
+
+
     void IceAttack()
     {
         Bullets bullet = Instantiate(prefabIceBall, transform.position, transform.rotation);
@@ -41,21 +35,25 @@ public class CharacterScript : BaseClass
     {
         base.StartAdditional();
         _gameManager = FindObjectOfType<GameManager>();
-        _enemyScript = FindObjectOfType<EnemyScript>();
-        isMonster = false;
-        if (!_gameManager.startGame)
-        { 
-            Load();
-            _gameManager.startGame = false;
+        if (_gameManager != null)
+        {
+            if (_gameManager.loadGame)
+            {
+                Load();
+            }
+
+            _gameManager.loadGame = true;
         }
+        transform.position = startPosition;
+        
     }
-    
+
     // Save data
     public void Save()
     {
         GameSaveManager.SavePlayer(this);
     }
-    
+
     // Load data
     public void Load()
     {
@@ -65,19 +63,23 @@ public class CharacterScript : BaseClass
         damage = data.damage;
         attackRadius = data.attackRadius;
         attackType = data.attackType;
+        Vector2 loadPosition = new Vector2(data.startPositionX,data.startPositionY);
+        startPosition = loadPosition;
         onHealthChanged();
     }
 
     private void SwordAttack()
     {
         Animator.Play("Player_Attack");
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, GetAttackDirection(), attackRadius, 
-                                                selectObjectsToHit);
+        musicManager.PLaySound(attackCharacter);
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, GetAttackDirection(), attackRadius,
+            selectObjectsToHit);
         if (hit2D.collider != null)
         {
             BaseClass damageOwner = hit2D.collider.GetComponent<BaseClass>();
             if (damageOwner != null)
             {
+                AttackEffect();
                 damageOwner.GetDamage(damage);
             }
         }
@@ -95,7 +97,7 @@ public class CharacterScript : BaseClass
 
     void DoDamage()
     {
-        if ( Rigidbody2D != null)
+        if (Rigidbody2D != null)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -119,9 +121,20 @@ public class CharacterScript : BaseClass
 
     protected override void Death()
     {
-        Animator.SetTrigger("Death");
+        base.Death();
+        _gameManager.loadGame = false;
+        startPosition = new Vector2(-1, -1);
+        Save();
         SceneLoader.Instance.LoadNextSceneByName("MainScene");
-        transform.position = newPlayerPosition;
+        transform.position = startPosition;
         health = maxHealth;
+    }
+    private void AttackEffect()
+    {
+        if (attackCharacterEffect != null && EnemyScript != null)
+        {
+            //Vector2 enemyPosition = EnemyScript.transform.position;
+            LeanPool.Spawn(attackCharacterEffect, transform.position, transform.rotation);
+        }
     }
 }

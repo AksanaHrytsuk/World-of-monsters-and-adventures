@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d935b18d9a338a485964fb4c8e91358c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadLevelDelay: 0
+  gameManager: {fileID: 0}

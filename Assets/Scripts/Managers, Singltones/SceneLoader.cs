@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private float reloadLevelDelay;
+    public GameManager gameManager;
     #region Singletone
 
     public static SceneLoader Instance { get; private set; }
@@ -59,6 +60,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    public void NewGame()
+    {
+        gameManager.loadGame = false;
+    }
+
     public void LoadLevel(int index)
     {
         SceneManager.LoadScene(index);
@@ -66,6 +72,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         DontDestroyOnLoad(gameObject);
     }
 }

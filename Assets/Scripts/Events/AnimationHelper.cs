@@ -3,6 +3,8 @@
 public class AnimationHelper : MonoBehaviour
 {
     [SerializeField] private Bullets prefabIceBall;
+    [SerializeField] private AudioClip iceSound;
+    [SerializeField] protected MusicManager musicManager;
 
     private Movement _movement;
     private EnemyScript enemyScript;
@@ -10,6 +12,7 @@ public class AnimationHelper : MonoBehaviour
     
     private void Start()
     {
+         musicManager = FindObjectOfType<MusicManager>();
         _movement = GetComponentInParent<Movement>();
         enemyScript = GetComponentInParent<EnemyScript>();
         target = FindObjectOfType<CharacterScript>().transform;
@@ -22,6 +25,7 @@ public class AnimationHelper : MonoBehaviour
             CharacterScript characterScript = FindObjectOfType<CharacterScript>();
             int enemyDamage = enemyScript.damage;
             characterScript.GetDamage(enemyDamage);
+            
         }
     }
     
@@ -30,6 +34,7 @@ public class AnimationHelper : MonoBehaviour
     {
         if (enemyScript.canShoot)
         {
+            musicManager.PLaySound(iceSound);
             Bullets bullet = Instantiate(prefabIceBall, enemyScript.targetPosition.position, transform.rotation);
             bullet.TargetPosition = target.position;
         }

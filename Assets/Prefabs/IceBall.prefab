@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosive: 1
+  explodeOnTarget: 1
   explodeRadius: 2
   distanceToObject: 1.5
   speed: 5
   _layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 1163503487885847214, guid: 0c5d77dfa06f4c99a8cc51ceb2c04131, type: 3}
   damage: 1

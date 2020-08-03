@@ -8,6 +8,7 @@ public class EnemyScript : BaseClass
 
   [SerializeField] private Text text;
   public bool canShoot = true;
+  [Header("Sounds")] [SerializeField] private AudioClip _portalSound;
 
   private float distance;
   private float meleeAttackDistance;
@@ -20,6 +21,7 @@ public class EnemyScript : BaseClass
 
   public void CreatPortal()
   {
+    musicManager.PLaySound(_portalSound);
     Sequence sequence = DOTween.Sequence();
     sequence.AppendInterval(1f);
     // TODO sequence.AppendCallback(() => AudioManager.Instance.PLaySound(portalMusic));

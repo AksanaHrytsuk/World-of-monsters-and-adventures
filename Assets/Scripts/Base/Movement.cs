@@ -10,16 +10,16 @@ public class Movement : MonoBehaviour
     public float speed;
 
     private Monster _monster;
-    private CharacterScript _character;
+    public CharacterScript Character { get; set; }
 
     void Start()
     {
-        StartAdditional();
-        _character = FindObjectOfType<CharacterScript>();
+        Character = FindObjectOfType<CharacterScript>();
         _monster = FindObjectOfType<Monster>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponentInChildren<Animator>();
         CanMove = true;
+        StartAdditional();
     }
 
     protected virtual void StartAdditional()

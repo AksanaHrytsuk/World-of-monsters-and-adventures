@@ -12,17 +12,15 @@ public class EnemyMovement : Movement
     public float distanceToPoint;
     [SerializeField] private float slowDown = 30f;
 
-    private CharacterScript _character;
     private int _currentIndex = 0;
     private int _step;
     protected override void StartAdditional()
     {
         base.StartAdditional();
-        _character = FindObjectOfType<CharacterScript>();
-        _character.changeEnemyBehavior += ChangeSpeed;
+        Character.changeEnemyBehavior += ChangeSpeed;
         if (_characterAsPatrolPoint)
         {
-            patrolPoints.Add(_character.gameObject);
+            patrolPoints.Add(Character.gameObject);
         }
     }
 
@@ -34,9 +32,9 @@ public class EnemyMovement : Movement
     public override Vector3 Direction()
     {
         // Если в плеера попол IceBall и плеер Frozen, монстрик следует к плееру
-        if (_character.Frozen)
+        if (Character.Frozen)
         {
-            return _character.transform.position - transform.position;
+            return Character.transform.position - transform.position;
         }
         if (patrolPoints.Count == 0)
         {

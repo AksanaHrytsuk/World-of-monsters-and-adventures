@@ -61,4 +61,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalEffect: {fileID: 19800002, guid: db50ab1c866680e4bb870bf5eb72dd3d, type: 3}
-  _onEnablePortal: 0

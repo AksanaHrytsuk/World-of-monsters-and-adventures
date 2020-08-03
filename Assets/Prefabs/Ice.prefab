@@ -147,3 +147,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   iceCube: {fileID: 0}
+  musicManager: {fileID: 0}

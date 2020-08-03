@@ -1,17 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Abyss : BaseClass
+public class Abyss : PortalBetweenPoints
 {
     [SerializeField] private bool dangerousBlock;
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Character") && dangerousBlock)
+    [Header("CheckPLayer")]
+    [SerializeField] private LayerMask platform;
+    [SerializeField] private float platformInRadius = 1f;
+    [SerializeField] private int damage;
+    private Animator _animator;
+    public override void Apply(Collider2D other)
+    { 
+        RaycastHit2D hit1 = Physics2D.Raycast(other.transform.position, Vector2.down, platformInRadius, platform);
+        if (other.CompareTag("Character") && dangerousBlock && hit1.collider == null)
         {
-            Animator.SetTrigger("SwitchOff/On");
-            CharacterScript characterScript = FindObjectOfType<CharacterScript>();
-            characterScript.GetDamage(damage);
+            other.GetComponentInChildren<Animator>().SetTrigger("SwitchOff/On");
+            CharacterScript characterScript = other.GetComponent<CharacterScript>();
+            if (characterScript != null)
+            {
+                characterScript.GetDamage(damage);
+                TeleportWithEffect(other);
+            }
         }
     }
 }

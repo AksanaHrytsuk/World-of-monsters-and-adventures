@@ -192,8 +192,10 @@ MonoBehaviour:
   - {fileID: 392239048904361720}
   - {fileID: 392239049783177311}
   - {fileID: 392239049408686617}
-  distanceToPoint: 1
   cyclically: 0
+  _characterAsPatrolPoint: 0
+  distanceToPoint: 1
+  slowDown: 30
 --- !u!50 &392239049265990514
 Rigidbody2D:
   serializedVersion: 4
@@ -235,10 +237,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   iceCube: {fileID: 0}
+  musicManager: {fileID: 0}
   probability: 100
   pickUps:
   - {fileID: 5519013831134595468, guid: 87a4efd1042758983870f6fb5ca695fe, type: 3}
   deathMonsterEffect: {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  isMonster: 1
 --- !u!1 &392239049408686617
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabIceBall: {fileID: 0}
+  iceSound: {fileID: 0}
+  musicManager: {fileID: 0}
   target: {fileID: 0}
 --- !u!1 &392239049783177311
 GameObject:

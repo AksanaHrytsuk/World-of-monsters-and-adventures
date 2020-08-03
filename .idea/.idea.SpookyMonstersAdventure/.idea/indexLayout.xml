@@ -17,11 +17,14 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>DevelopmentBuild</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>SMABuild</Path>
+      <Path>SpookyMonstersAdventure</Path>
       <Path>Temp</Path>
+      <Path>build</Path>
       <Path>obj</Path>
-      <Path>spooky-monsters-adventure</Path>
     </explicitExcludes>
   </component>
 </project>

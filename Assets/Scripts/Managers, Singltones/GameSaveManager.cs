@@ -5,12 +5,13 @@ using System.IO;
 
 public static class GameSaveManager
 {
+    public static string savePath = "./PlayerData.save";
     public static void SavePlayer(CharacterScript player)
     {
         // open binaryFormatter
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         // create filestreem. tell it two things where it is going to be saving this file and how you want to be opening it
-        FileStream fileStream = new FileStream(Application.persistentDataPath + "/PlayerData.save", FileMode.OpenOrCreate);
+        FileStream fileStream = new FileStream(savePath, FileMode.OpenOrCreate);
 
         PlayerData data = new PlayerData(player);
         // сохранить объекты в потоке
@@ -21,10 +22,10 @@ public static class GameSaveManager
 
     public static PlayerData LoadPlayer()
     {
-        if (File.Exists(Application.persistentDataPath + "/PlayerData.save"))
+        if (File.Exists(savePath))
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStream = new FileStream(Application.persistentDataPath + "/PlayerData.save", FileMode.Open);
+            FileStream fileStream = new FileStream(savePath, FileMode.Open);
             PlayerData data = binaryFormatter.Deserialize(fileStream) as PlayerData;
             
             fileStream.Close();
@@ -45,6 +46,9 @@ public static class GameSaveManager
         public int damage;
         public float attackRadius;
         public string attackType;
+        public float startPositionX;
+        public float startPositionY;
+        
         public PlayerData(CharacterScript player)
         {
             health = player.health;
@@ -52,6 +56,8 @@ public static class GameSaveManager
             damage = player.damage;
             attackRadius = player.attackRadius;
             attackType = player.attackType;
+            startPositionX = player.startPosition.x;
+            startPositionY = player.startPosition.y;
         }
     }
     

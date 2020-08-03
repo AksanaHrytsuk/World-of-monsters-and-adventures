@@ -29,6 +29,8 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("Character"))
         {
+            collision.GetComponent<CharacterScript>().startPosition = new Vector2(-1, -1);
+            collision.GetComponent<CharacterScript>().Save();
             SceneLoader.Instance.LoadNextSceneByName("MainScene");
         }
     }
@@ -51,7 +53,7 @@ public class Portal : MonoBehaviour
     {
         if (portalEffect != null)
         {
-            Vector3 fxPosition = transform.position;
+            Vector2 fxPosition = transform.position;
             LeanPool.Spawn(portalEffect, fxPosition, Quaternion.identity);
         }
     }

@@ -12,6 +12,8 @@ public class BaseClass : MonoBehaviour
     [SerializeField] protected internal float attackRadius;
     [SerializeField] protected internal LayerMask selectObjectsToHit;
     [SerializeField] protected GameObject iceCube;
+    [SerializeField] protected MusicManager musicManager;
+    
    
     public Action onDeath = delegate {  };
 
@@ -47,9 +49,9 @@ public class BaseClass : MonoBehaviour
         onDeath();
         Destroy(Movement);
         Destroy(Rigidbody2D);
-       // Destroy(Collider2D);
+        Destroy(Collider2D);
         DeathAdditional();
-       }
+    }
 
     protected virtual void DeathAdditional()
     {
@@ -95,6 +97,7 @@ public class BaseClass : MonoBehaviour
         Movement = GetComponent<Movement>();
         CharacterScript = GetComponent<CharacterScript>();
         EnemyScript = GetComponent<EnemyScript>();
+        musicManager = FindObjectOfType<MusicManager>();
     }
 
     private void Start()

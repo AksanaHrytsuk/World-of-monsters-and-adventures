@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using DG.Tweening;
 
 public class Platform :  BaseClass
@@ -15,11 +16,28 @@ public class Platform :  BaseClass
     
   [Header("Distance")]
   [SerializeField] float units;
+  
+  [Header("CheckPLayer")]
+  [SerializeField] private LayerMask platform;
+  [SerializeField] private float platformInRadius = 1f;
 
   private float _targetRight;
   private float _targetLeft;
   private float _targetForward;
   private float _targetBack;
+
+
+  // public void OnTriggerStay2D(Collider2D other)
+  // {
+  //   if (other.CompareTag("Character"))
+  //   {
+  //     RaycastHit2D hit2D = Physics2D.Raycast(_characterScript.transform.position, -Vector2.up, platformInRadius, platform);
+  //     if (hit2D.collider != null && _onPlatform)
+  //     {
+  //       
+  //     }
+  //   }
+  // }
 
   private void Start()
   {
